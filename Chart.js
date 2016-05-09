@@ -1458,9 +1458,17 @@
 				{
 				case "left":
 					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
+
+					if (tooltipX < 0) {
+						tooltipX = 0;
+					}
 					break;
 				case "right":
 					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
+
+					if (tooltipX + tooltipWidth > this.chart.width) {
+						tooltipX -= tooltipX + tooltipWidth - this.chart.width;
+					}
 					break;
 				}
 
